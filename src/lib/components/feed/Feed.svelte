@@ -4,7 +4,7 @@
     export let list;
 </script>
 
-<div class="bg-slate-700 flex flex-col md:flex-row md:flex-wrap">
+<div class="bg-slate-700 flex flex-col md:flex-row md:flex-wrap py-8">
     <div class="flex justify-center flex-wrap">
         {#each list as post}
             <div class="w-full md:w-1/4">

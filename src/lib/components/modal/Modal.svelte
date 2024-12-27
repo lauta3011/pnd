@@ -1,17 +1,18 @@
 <script>
+    import Icon from "@iconify/svelte";
+
     export let isOpen = false;
     export let onClose;
 </script>
 
 {#if isOpen}
     <div class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-        <div class="bg-white rounded-lg p-4 max-w-sm w-full">
-            <button class="absolute top-2 right-2" on:click={onClose}>✖</button>
+        <div class="bg-white overflow-y-auto rounded-lg p-4 max-w-5xl h-full w-full">
+            <button class="flex justify-self-end sticky top-0 text-3xl" on:click={onClose}>
+                <Icon icon="weui:close2-filled" />
+            </button>
             <slot></slot>
         </div>
     </div>
 {/if}
-
-<style>
-    /* Estilos para el modal si es necesario */
-</style>
+  

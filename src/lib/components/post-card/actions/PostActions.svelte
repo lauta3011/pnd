@@ -8,13 +8,13 @@
 
 <div class="relative w-full justify-between inline-flex px-3 pt-3">
     <button on:click={handleShare} class="button-container">
-        <Icon icon="mdi:share" />
+        <Icon icon="weui:previous-outlined" />
     </button>
-    <button on:click={handleComment} class="button-container">
-        <Icon icon="mdi:comment" />
+    <button class="button-container shadow-lg absolute left-[40%] -top-[20%] text-3xl flex justify-center items-center bg-slate-400 w-14 h-14 p-2" on:click={handleComment} >
+        <Icon icon="weui:max-window-outlined" />
     </button>
     <button on:click={handleLike} class="button-container">
-        <Icon icon="mdi:like" />
+        <Icon icon="weui:sticker-outlined" />
     </button>
 </div>
 

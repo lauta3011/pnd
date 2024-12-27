@@ -11,9 +11,7 @@
     <!-- Navegación -->
     <nav>
       <ul class="flex space-x-6">
-        <li><a href="/" class="hover:underline">Inicio</a></li>
-        <li><a href="/about" class="hover:underline">Sobre nosotros</a></li>
-        <li><a href="/contact" class="hover:underline">Contacto</a></li>
+        <li><a href="/" class="hover:underline">NUEVA NOTICIA</a></li>
       </ul>
     </nav>
   </header>
