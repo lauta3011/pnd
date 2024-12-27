@@ -4,10 +4,12 @@
     export let list;
 </script>
 
-<div class="bg-slate-700 flex flex-col">
-    <div class="justify-center">
+<div class="bg-slate-700 flex flex-col md:flex-row md:flex-wrap">
+    <div class="flex justify-center flex-wrap">
         {#each list as post}
-            <PostCard post={post} />
+            <div class="w-full md:w-1/4">
+                <PostCard post={post} />
+            </div>
         {/each}
     </div>
 </div>
