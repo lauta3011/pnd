@@ -2,4 +2,6 @@
     import NewsForm from "$lib/components/news-form/NewsForm.svelte";
 </script>
 
-<NewsForm />
+<div class="flex flex-col md:p-12 bg-slate-700">
+    <NewsForm />
+</div>
