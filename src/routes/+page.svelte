@@ -5,6 +5,6 @@
   
 </script>
 
-<div class="flex flex-col bg-slate-700 ml-4">
+<div class="h-full flex flex-col ml-4">
   <Feed list={mockData}/>
 </div>
