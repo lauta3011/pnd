@@ -7,6 +7,5 @@
 
 <main class="h-screen">
 	<Header />
-		{@render children()}
-	<Footer/>
+	{@render children()}
 </main>
