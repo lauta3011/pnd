@@ -1,5 +1,5 @@
 <script>
-    import { fetchArticles } from "$lib/api/fetch-articles";
+    import { supabase } from "$lib/api/client";
 
     let title = '';
     let description = '';
@@ -7,6 +7,8 @@
     let authorName = '';
     let file = null;
     let error = false;
+
+    let success = false;
 
     function handleImageChange(event) {
       file = event.target.files[0];
@@ -21,7 +23,16 @@
   
     async function handleSubmit(event) {
         if(title !== '' && description !== '' && keyPhrases !== '' && authorName !== '') {
-            await fetchArticles().then((data) => console.log('desde aca ', data));
+          const { data, error } = await supabase
+            .from('submited-articles')
+            .insert([
+              { title: title, description: description, key_phrases: keyPhrases, author: authorName },
+            ])
+            .select()
+          
+            if (!error) {
+              success = true;
+            }
         } else {
             displayError()
         }
@@ -29,6 +40,7 @@
     }
   </script>
   
+  {#if !success}
   <form on:submit={handleSubmit} class="lg:w-md p-4 {!error ? 'bg-slate-200' : 'bg-red-800'}  shadow-md rounded">
     <div class="border-b-2 border-gray-400 pb-4 mb-8">
         <h1 class="text-4xl my-4 font-light text-center">Agrega una noticia</h1>
@@ -87,3 +99,6 @@
     <button disabled={error} type="submit" class=" {!error ? 'bg-orange-500' : 'bg-red-500 animate-ping'}  text-white font-bold py-2 px-4
   rounded">Enviar</button>
   </form>
+  {:else}
+    <span>success!</span>
+  {/if}

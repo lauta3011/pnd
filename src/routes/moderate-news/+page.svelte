@@ -1,10 +1,22 @@
-<script>
-    import AcceptDeclineUpdate from "$lib/components/news-form/actions/AcceptDeclineUpdate.svelte";
-import PostDetails from "$lib/components/post-card/details/PostDetails.svelte";
-    import { mockData } from "$lib/mock-data/mockData";
+<script lang="ts">
+    import { supabase } from "$lib/api/client";
+    import ModerateView from "$lib/components/news-form/moderate-view/ModerateView.svelte";
+    import { onMount } from "svelte";
+
+    $: articleIndex = 0;
+    let articles: any = [];
+
+    onMount(async () => {
+        await supabase.from('submited-articles').select().then(({ data, error }: any) => {
+            articles = data;
+        });
+    });
 </script>
 
-<div class="h-full bg-slate-700 ml-4">
-        <PostDetails data={mockData[0]} />
-        <AcceptDeclineUpdate />
-</div>
+{#if articleIndex < articles.length}
+    {#key articleIndex}
+        <ModerateView article={articles[articleIndex]} handleNextArticle={() => articleIndex += 1}/>
+    {/key}
+{:else}
+    <span>no hay mas flaco</span>
+{/if}
